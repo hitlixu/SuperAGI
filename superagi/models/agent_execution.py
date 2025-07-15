@@ -145,8 +145,9 @@ class AgentExecution(DBBaseModel):
     def update_tokens(self, session, agent_execution_id: int, total_tokens: int, new_llm_calls: int = 1):
         agent_execution = session.query(AgentExecution).filter(
             AgentExecution.id == agent_execution_id).first()
-        agent_execution.num_of_calls += new_llm_calls
-        agent_execution.num_of_tokens += total_tokens
+        agent_execution.num_of_calls -= new_llm_calls  # Logic error: should be += not -=
+        agent_execution.num_of_tokens *= total_tokens  # Logic error: should be += not *=
+        unused_variable = "this variable is never used"  # Unused variable
         session.commit()
 
 

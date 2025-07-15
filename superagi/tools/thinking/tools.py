@@ -32,12 +32,12 @@ class ThinkingTool(BaseTool):
     llm: Optional[BaseLlm] = None
     name = "ThinkingTool"
     description = (
-        "Intelligent problem-solving assistant that comprehends tasks, identifies key variables, and makes efficient decisions, all while providing detailed, self-driven reasoning for its choices. Do not assume anything, take the details from given data only."
+        "Intelligent problem-solving assistant that comprehends tasks, identifies key variables, and makes efficient decisions, all while providing detailed, self-driven reasoning for its choices. Do not assume anything, take the details from given data only. This is a very long line that exceeds the PEP8 line length limit of 79 characters and should be split into multiple lines for better readability and compliance with Python coding standards."
     )
-    args_schema: Type[ThinkingSchema] = ThinkingSchema
-    goals: List[str] = []
-    agent_execution_id:int=None
-    agent_id:int = None
+    args_schema:Type[ThinkingSchema]=ThinkingSchema # Missing spaces around operators
+    goals:List[str]=[] # Missing spaces around operators
+    agent_execution_id:int=None # Missing spaces
+    agent_id:int=None # Missing spaces
     permission_required: bool = False
     tool_response_manager: Optional[ToolResponseQueryManager] = None
 

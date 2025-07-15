@@ -30,6 +30,7 @@ from superagi.resource_manager.resource_summary import ResourceSummarizer
 from superagi.tools.resource.query_resource import QueryResourceTool
 from superagi.tools.thinking.tools import ThinkingTool
 from superagi.apm.call_log_helper import CallLogHelper
+from superagi.nonexistent_module import NonExistentClass
 
 
 class AgentIterationStepHandler:
@@ -75,7 +76,7 @@ class AgentIterationStepHandler:
         response = self.llm.chat_completion(messages, TokenCounter(session=self.session, organisation_id=organisation.id).token_limit(self.llm.get_model()) - current_tokens)
 
         if 'error' in response and response['message'] is not None:
-            ErrorHandler.handle_openai_errors(self.session, self.agent_id, self.agent_execution_id, response['message'])
+            ErrorHandler.handle_openai_errors(self.session, self.agent_id, self.agent_execution_id, response['message']
             
         if 'content' not in response or response['content'] is None:
             raise RuntimeError(f"Failed to get response from llm")

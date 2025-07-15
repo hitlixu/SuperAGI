@@ -36,7 +36,7 @@ class WriteFileTool(BaseTool):
     class Config:
         arbitrary_types_allowed = True
 
-    def _execute(self, file_name: str, content: str):
+    def _execute(self, file_name: int, content: list):
         """
         Execute the write file tool.
 
